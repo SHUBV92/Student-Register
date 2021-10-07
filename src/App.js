@@ -1,10 +1,7 @@
-import Form from './components/Form';
-// import Home from './containers/Home';
-import Home from './containers/Home/Home';
-import Register from './containers/Register/Register';
-import Students from './containers/Students/Students';
-
+import { Breadcrumbs } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import BreadCrumb from './components/BreadCrumb';
+import routes from './routes';
 
 function App() {
   return (
@@ -24,7 +21,40 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path='/students'>
+          {routes.map(({ path, Component }, key) => (
+            <Route
+              exact
+              path={path}
+              key={key}
+              render={(props) => {
+                const crumbs = routes
+                  .filter(({ path }) => props.match.path.includes(path))
+                  .map(({ path, ...rest }) => ({
+                    path: Object.keys(props.match.params).length
+                      ? Object.keys(props.match.params).reduce(
+                          (path, param) =>
+                            path.replace(
+                              `:${param}`,
+                              props.match.params[param]
+                            ),
+                          path
+                        )
+                      : path,
+                    ...rest,
+                  }));
+
+                console.log(`Generated crumbs for ${props.match.path}`);
+                crumbs.map(({ name, path }) => console.log({ name, path }));
+
+                return (
+                  <div className='p-8'>
+                    <Component {...props} />
+                  </div>
+                );
+              }}
+            />
+          ))}
+          {/* <Route path='/students'>
             <Students />
           </Route>
           <Route path='/register'>
@@ -32,7 +62,7 @@ function App() {
           </Route>
           <Route path='/'>
             <Home />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>

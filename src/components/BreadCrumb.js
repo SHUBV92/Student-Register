@@ -1,7 +1,6 @@
-import { Breadcrumbs } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
-
-export default function BreadCrumb({ crumbs }) {
+const BreadCrumbs = ({ crumbs }) => {
   if (crumbs.length <= 1) {
     return null;
   }
@@ -19,6 +18,6 @@ export default function BreadCrumb({ crumbs }) {
       )}
     </div>
   );
-}
+};
 
-export default Breadcrumbs;
+export default BreadCrumbs;
