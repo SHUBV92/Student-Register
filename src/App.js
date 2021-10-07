@@ -24,14 +24,14 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route path='/'>
-            <Home />
-          </Route>
           <Route path='/students'>
             <Students />
           </Route>
           <Route path='/register'>
             <Register />
+          </Route>
+          <Route path='/'>
+            <Home />
           </Route>
         </Switch>
       </div>
