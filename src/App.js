@@ -1,4 +1,9 @@
 import Form from './components/Form';
+// import Home from './containers/Home';
+import Home from './containers/Home/Home';
+import Register from './containers/Register/Register';
+import Students from './containers/Students/Students';
+
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -18,7 +23,17 @@ function App() {
             </li>
           </ul>
         </nav>
-        <Form />
+        <Switch>
+          <Route path='/'>
+            <Home />
+          </Route>
+          <Route path='/students'>
+            <Students />
+          </Route>
+          <Route path='/register'>
+            <Register />
+          </Route>
+        </Switch>
       </div>
     </Router>
   );
