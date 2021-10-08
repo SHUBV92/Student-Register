@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 
 const BreadCrumbs = ({ crumbs }) => {
-  if (crumbs.length <= 1) {
+  if (!crumbs || crumbs.length <= 1) {
+    console.log('Breadcrumbs');
     return null;
   }
 
   return (
     <div>
+      shubs
       {crumbs.map(({ name, path }, key) =>
         key + 1 === crumbs.length ? (
           <span key={key}>{name}</span>

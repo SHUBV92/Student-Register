@@ -1,9 +1,9 @@
-import BreadCrumb from '../../components/BreadCrumb';
+import BreadCrumbs from '../../components/BreadCrumb';
 
 const Home = ({ crumbs }) => {
   return (
     <div>
-      <BreadCrumb crumbs={crumbs} />
+      <BreadCrumbs crumbs={crumbs} />
       <h2>Home</h2>
     </div>
   );
