@@ -5,7 +5,8 @@ export default function Card({ children }) {
         backgroundColor: 'grey',
         padding: '10px',
         margin: '10px',
-        color: 'blue',
+        color: 'white',
+        borderRadius: '20px',
       }}
     >
       {children}
