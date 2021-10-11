@@ -1,13 +1,24 @@
-import { Breadcrumbs } from '@material-ui/core';
+import { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import BreadCrumb from './components/BreadCrumb';
 import routes from './routes';
+import StudentData from './studentsDataBase.json';
+
+// styles
+import { AppContainer, Nav, Logo } from './App.styles';
+
+// components
+import Home from './containers/Home/Home';
+import Register from './containers/Register/Register';
+import Students from './containers/Students/Students';
+import EditStudents from './containers/EditStudents/EditStudents';
 
 function App() {
+  const [students, setStudents] = useState(StudentData);
   return (
     <Router>
-      <div className='App'>
-        <nav>
+      <AppContainer>
+        <Nav>
+          <Logo>Logo</Logo>
           <ul>
             <li>
               <Link to='/'>Home</Link>
@@ -15,12 +26,22 @@ function App() {
             <li>
               <Link to='/students'>Students</Link>
             </li>
-            <li>
-              <Link to='/register'>Add a new Student</Link>
-            </li>
           </ul>
-        </nav>
-        <Switch>
+        </Nav>
+
+        {routes.map((route) => (
+          <Route key={route.path} path={route.path} exact={route.exact}>
+            <route.sidebar />
+          </Route>
+        ))}
+        <div>
+          {routes.map((route) => (
+            <Route key={route.path} path={route.path} exact={route.exact}>
+              <route.sidebar />
+            </Route>
+          ))}
+        </div>
+        {/* <Switch>
           {routes.map(({ path, Component }, key) => (
             <Route
               exact
@@ -48,23 +69,18 @@ function App() {
 
                 return (
                   <div className='p-8'>
-                    <Component {...props} />
+                    <Component
+                      {...props}
+                      students={students}
+                      setStudents={setStudents}
+                    />
                   </div>
                 );
               }}
             />
           ))}
-          {/* <Route path='/students'>
-            <Students />
-          </Route>
-          <Route path='/register'>
-            <Register />
-          </Route>
-          <Route path='/'>
-            <Home />
-          </Route> */}
-        </Switch>
-      </div>
+        </Switch> */}
+      </AppContainer>
     </Router>
   );
 }

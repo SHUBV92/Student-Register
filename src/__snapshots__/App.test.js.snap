@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`correct routes are exported 1`] = `
+Array [
+  "Home: /",
+  "Students: /students",
+  "EditStudents: /students(/:id)",
+  "Register: /register",
+]
+`;
