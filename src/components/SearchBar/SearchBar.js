@@ -1,4 +1,4 @@
-import './Search.css';
+import './SearchBar.styles.js';
 import { useHistory } from 'react-router-dom';
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
@@ -23,10 +23,10 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
         onInput={(e) => setSearchQuery(e.target.value)}
         type='text'
         id='header-search'
-        placeholder='Search students'
+        placeholder='Search for a student by name or ID'
         name='s'
       />
-      <button type='submit'>Search</button>
+      {/* <button type='submit'>Search</button> */}
     </form>
   );
 };

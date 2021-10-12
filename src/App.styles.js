@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
 export const AppContainer = styled.div`
-  position: relative;
+  display: flex;
+  /* justify-content: center; */
+  margin-left: 200px;
 `;
 
 export const Nav = styled.nav`
-  position: absolute;
-  background-color: #3e3e3e;
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 200px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
   left: 0;
-  height: 100%;
+  background-color: lightgrey; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
 
   .ul {
     background-color: #f0f0f0;

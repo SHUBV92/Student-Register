@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import Search from './Search';
+import Search from './SearchBar';
 
 expect.extend(toHaveNoViolations);
 

@@ -8,20 +8,17 @@ export default [
     path: '/',
     exact: true,
     name: 'Home',
-    sidebar: () => Home,
-    main: () => Home,
+    Component: Home,
   },
   {
     path: '/students',
     name: 'Students',
-    sidebar: () => Home,
-    main: () => Students,
+    Component: Students,
   },
   { path: '/students(/:id)', name: 'EditStudents', Component: EditStudents },
   {
     path: '/register',
     name: 'Register',
-    sidebar: () => Home,
-    main: () => Register,
+    Component: Register,
   },
 ];
