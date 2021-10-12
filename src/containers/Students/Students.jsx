@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import filterStudents from '../../utils/filterStudents';
 
 // component
-import Card from '../../components/Card';
+import Card from '../../components/Card/Card';
 import SearchBar from '../../components/SearchBar/SearchBar';
 
 // styles
@@ -19,9 +19,8 @@ const Students = ({ students, setStudents }) => {
   const [searchQuery, setSearchQuery] = useState(query || '');
   const filteredStudents = filterStudents(students, searchQuery);
 
-  const [sortBy, setSortBy] = useState('(A-Z)');
+  const [sortBy, setSortBy] = useState('(Z-A)');
   const [showRegister, setShowRegister] = useState(false);
-
   const handleSort = () => {
     if (sortBy === '(A-Z)') {
       setSortBy('(Z-A)');
@@ -40,12 +39,12 @@ const Students = ({ students, setStudents }) => {
       });
     }
   };
-
   return (
     <Test>
       <StudentsContainer>
         <h2>Students</h2>
         <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+        {/* <InfoBar filteredStudents={filteredStudents} /> */}
         <InfoBar>
           <p>
             <strong>{filteredStudents.length} Students found</strong>

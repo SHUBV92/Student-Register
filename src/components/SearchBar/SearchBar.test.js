@@ -1,11 +1,16 @@
-import { render } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import Search from './SearchBar';
+import { render, fireEvent } from '@testing-library/react';
 
-expect.extend(toHaveNoViolations);
+it('Search updates on change', () => {
+  const setSearch = jest.fn((value) => {});
+  const { queryByPlaceholderText } = render(
+    <SearchBar setSearchQuery={setSearch} />
+  );
 
-test('should not have any accessibility violations', async () => {
-  const { container } = render(<Search searchQuery='' />);
-  const results = await axe(container);
-  expect(results).toHaveNoViolations();
+  const searchInput = queryByPlaceholderText(
+    'Search for a student by name or ID'
+  );
+
+  fireEvent.change(searchInput, { target: { value: 'Captain' } });
+
+  expect(searchInput.value).toBe('Captain');
 });

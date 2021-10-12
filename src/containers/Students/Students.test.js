@@ -1,13 +1,16 @@
-import { render } from '@testing-library/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
+import { render, fireEvent } from '@testing-library/react';
 import Students from './Students';
-import Search from './Search';
+import SearchBar from '../../components/SearchBar/SearchBar';
+import studentsDataObject from '../../studentsDataBase.json';
+import { MemoryRouter } from 'react-router-dom';
 
-expect.extend(toHaveNoViolations);
+it('Display students with a name', () => {
+  const students = render(
+    <MemoryRouter>
+      <Students students={studentsDataObject} />
+    </MemoryRouter>
+  );
 
-// test('should', async () => {
-//   const { container } = render(<Search searchQuery='shub' />);
-//   const { container } = render(<Students />);
-
-//   expect(results).
-// });
+  const title = students.getByText('Captain America');
+  expect(title).toBeTruthy();
+});

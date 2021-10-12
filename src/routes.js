@@ -15,7 +15,6 @@ export default [
     name: 'Students',
     Component: Students,
   },
-  { path: '/students(/:id)', name: 'EditStudents', Component: EditStudents },
   {
     path: '/register',
     name: 'Register',

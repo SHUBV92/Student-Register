@@ -1,11 +1,11 @@
-import './SearchBar.styles.js';
 import { useHistory } from 'react-router-dom';
+import './SearchBar.styles.js';
 
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
   const history = useHistory();
   const onSubmit = (e) => {
-    history.push(`?s=${searchQuery}`);
     e.preventDefault();
+    history.push(`?s=${searchQuery}`);
   };
 
   return (
@@ -30,4 +30,5 @@ const SearchBar = ({ searchQuery, setSearchQuery }) => {
     </form>
   );
 };
+
 export default SearchBar;

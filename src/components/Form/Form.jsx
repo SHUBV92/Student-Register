@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 
-export default function ({ addStudent }) {
+const Form = ({ addStudent }) => {
   const [name, setName] = useState('');
 
-  // localStorage.setItem('answers', name);
   const handleChange = (event) => {
     setName(event.target.value);
   };
 
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
+      event.preventDefault();
       addStudent(name);
+      setName('');
       alert('Student added');
     }
   };
@@ -25,4 +26,6 @@ export default function ({ addStudent }) {
       />
     </form>
   );
-}
+};
+
+export default Form;
