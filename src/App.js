@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-function App() {
+// utils
+import routes from './routes';
+import studentsData from './studentsDataBase.json';
+
+// styles
+import { AppContainer, Nav, Logo } from './App.styles';
+
+// components
+import Home from './containers/Home/Home';
+import Register from './containers/Register/Register';
+import Students from './containers/Students/Students';
+
+const SideNav = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Nav>
+      <Logo>Logo</Logo>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/students'>Students</Link>
+        </li>
+      </ul>
+    </Nav>
   );
-}
+};
+
+const App = () => {
+  const [students, setStudents] = useState(studentsData);
+
+  return (
+    <Router>
+      <AppContainer>
+        <SideNav />
+        <Switch>
+          <Route path='/students'>
+            <Students students={students} setStudents={setStudents} />
+          </Route>
+          <Route path='/'>
+            <Home />
+          </Route>
+        </Switch>
+      </AppContainer>
+    </Router>
+  );
+};
 
 export default App;
