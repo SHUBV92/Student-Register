@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Form = ({ addStudent }) => {
+const Form = ({ addStudent, editStudent, isEditing }) => {
   const [name, setName] = useState('');
 
   const handleChange = (event) => {
@@ -10,7 +10,13 @@ const Form = ({ addStudent }) => {
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
-      addStudent(name);
+
+      if (isEditing) {
+        editStudent(name);
+      }
+
+      // addStudent(name);
+
       setName('');
       alert('Student added');
     }

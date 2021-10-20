@@ -10,8 +10,8 @@ import { AppContainer, Nav, Logo } from './App.styles';
 
 // components
 import Home from './containers/Home/Home';
-import Register from './containers/Register/Register';
 import Students from './containers/Students/Students';
+import EditStudents from './containers/EditStudents/EditStudents';
 
 const SideNav = () => {
   return (

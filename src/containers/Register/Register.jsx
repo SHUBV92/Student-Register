@@ -8,8 +8,6 @@ const Register = ({ students, setStudents }) => {
       { name: text, id: Math.floor(Math.random() * 100).toString() },
     ];
     setStudents(newStudent);
-
-    // Use UUID library
   };
 
   return (

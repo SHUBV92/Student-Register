@@ -12,6 +12,7 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 // styles
 import { StudentsContainer, InfoBar, Test } from './Students.styles';
 import Register from '../Register/Register';
+import EditStudents from '../EditStudents/EditStudents';
 
 const Students = ({ students, setStudents }) => {
   const { search } = window.location;
@@ -21,6 +22,10 @@ const Students = ({ students, setStudents }) => {
 
   const [sortBy, setSortBy] = useState('(Z-A)');
   const [showRegister, setShowRegister] = useState(false);
+  const [selectedStudent, setSelectedStudent] = useState('');
+
+  console.log('Students', selectedStudent);
+
   const handleSort = () => {
     if (sortBy === '(A-Z)') {
       setSortBy('(Z-A)');
@@ -62,10 +67,13 @@ const Students = ({ students, setStudents }) => {
             Sort by: Name {sortBy}
           </button>
         </InfoBar>
-        {filteredStudents.map((student) => {
+        {filteredStudents.map((student, id) => {
           return (
             <Card>
-              <Link to={`/students/${student.id}`}>
+              <Link
+                to={`/students/${student.id}`}
+                onClick={() => setSelectedStudent({ student, id })}
+              >
                 <h3>{student.name}</h3>
               </Link>
               <p>{student.id}</p>
@@ -75,6 +83,13 @@ const Students = ({ students, setStudents }) => {
       </StudentsContainer>
       {showRegister && (
         <Register students={students} setStudents={setStudents} />
+      )}
+      {selectedStudent && (
+        <EditStudents
+          selectedStudent={selectedStudent}
+          students={students}
+          setStudents={setStudents}
+        />
       )}
     </Test>
   );
